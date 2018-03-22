@@ -10,7 +10,7 @@ import (
 func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", index)
-	files := http.FileServer(http.Dir("/Users/chenzhang/GolandProjects/src/public"))
+	files := http.FileServer(http.Dir("/Users/chenzhang/GolandProjects/src/gwp_test/public"))
 	mux.Handle("/static/", http.StripPrefix("/static/", files))
 	server := &http.Server{Addr: ":8000", Handler: mux}
 	server.ListenAndServe()
@@ -21,13 +21,13 @@ func index(w http.ResponseWriter, r *http.Request) {
 	var tmpl_files []string
 	_, err := session(w, r)
 	if err != nil {
-		tmpl_files = []string{"/Users/chenzhang/GolandProjects/src/templates/layout.html",
-			"/Users/chenzhang/GolandProjects/src/templates/public.navbar.html",
-			"/Users/chenzhang/GolandProjects/src/templates/index.html"}
+		tmpl_files = []string{"/Users/chenzhang/GolandProjects/src/gwp_test/templates/layout.html",
+			"/Users/chenzhang/GolandProjects/src/gwp_test/templates/public.navbar.html",
+			"/Users/chenzhang/GolandProjects/src/gwp_test/templates/index.html"}
 	} else {
-		tmpl_files = []string{"/Users/chenzhang/GolandProjects/src/templates/layout.html",
-			"/Users/chenzhang/GolandProjects/src/templates/private.navbar.html",
-			"/Users/chenzhang/GolandProjects/src/templates/index.html"}
+		tmpl_files = []string{"/Users/chenzhang/GolandProjects/src/gwp_test/templates/layout.html",
+			"/Users/chenzhang/GolandProjects/src/gwp_test/templates/private.navbar.html",
+			"/Users/chenzhang/GolandProjects/src/gwp_test/templates/index.html"}
 	}
 	templates = template.Must(template.ParseFiles(tmpl_files...))
 	threads, err := data.Threads();
