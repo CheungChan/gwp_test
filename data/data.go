@@ -10,7 +10,7 @@ var Db *sql.DB
 
 func init() {
 	var err error
-	Db, err = sql.Open("mysql", "root:1234@tcp(www.cheungchan.cc:3306)/gwp", )
+	Db, err = sql.Open("mysql", "xxx:xxxx@tcp(www.xxx.xxx:3306)/xxx", )
 	if err != nil {
 		log.Fatal(err)
 	}
